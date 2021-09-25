@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/asis-clothing/static/css/main.40fc1037.chunk.css",
-    "main.js": "/asis-clothing/static/js/main.35a71f88.chunk.js",
-    "main.js.map": "/asis-clothing/static/js/main.35a71f88.chunk.js.map",
+    "main.css": "/asis-clothing/static/css/main.3321d497.chunk.css",
+    "main.js": "/asis-clothing/static/js/main.cb427b6e.chunk.js",
+    "main.js.map": "/asis-clothing/static/js/main.cb427b6e.chunk.js.map",
     "runtime-main.js": "/asis-clothing/static/js/runtime-main.3e740f2b.js",
     "runtime-main.js.map": "/asis-clothing/static/js/runtime-main.3e740f2b.js.map",
-    "static/js/2.d4e5c71e.chunk.js": "/asis-clothing/static/js/2.d4e5c71e.chunk.js",
-    "static/js/2.d4e5c71e.chunk.js.map": "/asis-clothing/static/js/2.d4e5c71e.chunk.js.map",
+    "static/js/2.97571219.chunk.js": "/asis-clothing/static/js/2.97571219.chunk.js",
+    "static/js/2.97571219.chunk.js.map": "/asis-clothing/static/js/2.97571219.chunk.js.map",
     "index.html": "/asis-clothing/index.html",
     "service-worker.js": "/asis-clothing/service-worker.js",
     "service-worker.js.map": "/asis-clothing/service-worker.js.map",
-    "static/css/main.40fc1037.chunk.css.map": "/asis-clothing/static/css/main.40fc1037.chunk.css.map",
-    "static/js/2.d4e5c71e.chunk.js.LICENSE.txt": "/asis-clothing/static/js/2.d4e5c71e.chunk.js.LICENSE.txt",
+    "static/css/main.3321d497.chunk.css.map": "/asis-clothing/static/css/main.3321d497.chunk.css.map",
+    "static/js/2.97571219.chunk.js.LICENSE.txt": "/asis-clothing/static/js/2.97571219.chunk.js.LICENSE.txt",
+    "static/media/coming-soon.13690cc6.svg": "/asis-clothing/static/media/coming-soon.13690cc6.svg",
     "static/media/crown.3a4e2b15.svg": "/asis-clothing/static/media/crown.3a4e2b15.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.3e740f2b.js",
-    "static/js/2.d4e5c71e.chunk.js",
-    "static/css/main.40fc1037.chunk.css",
-    "static/js/main.35a71f88.chunk.js"
+    "static/js/2.97571219.chunk.js",
+    "static/css/main.3321d497.chunk.css",
+    "static/js/main.cb427b6e.chunk.js"
   ]
 }
