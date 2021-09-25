@@ -6,15 +6,15 @@ import { auth } from "../../firebase/firebase.utils.js";
 
 const Header = (props) => (
   <div className="header">
-    <Link className="logo-container" to="/">
+    <Link className="logo-container" to="/asis-clothing/">
       <Logo />
     </Link>
     <div className="options">
       {props.user ? <p>{props.user.displayName}</p> : ""}
-      <Link className="option" to="/shop">
+      <Link className="option" to="/asis-clothing/shop">
         SHOP
       </Link>
-      <Link className="option" to="/shop">
+      <Link className="option" to="/asis-clothing/shop">
         CONTACT
       </Link>
       {props.user ? (
@@ -22,7 +22,7 @@ const Header = (props) => (
           SIGN OUT
         </Link>
       ) : (
-        <Link className="option" to="/signin">
+        <Link className="option" to="/asis-clothing/signin">
           SIGNIN
         </Link>
       )}
