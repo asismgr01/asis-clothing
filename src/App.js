@@ -6,6 +6,7 @@ import Shop from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils.js";
+import UnderConstruction from "./pages/under-construction/under-construction.component";
 
 class App extends React.Component {
   constructor() {
@@ -33,6 +34,7 @@ class App extends React.Component {
     console.log(this.state.currentUser);
   }
   render() {
+    const links = ['hats','jackets','sneakers','mens','womens','contact']
     return (
       <div>
         <Header user={this.state.currentUser} />
@@ -40,6 +42,7 @@ class App extends React.Component {
           <Route exact path="/asis-clothing/" component={Homepage} />
           <Route exact path="/asis-clothing/shop" component={Shop} />
           <Route exact path="/asis-clothing/signin" component={SignInAndSignUpPage} />
+          <Route path="/asis-clothing/under-construction/" component={UnderConstruction} />
         </Switch>
       </div>
     );
@@ -54,4 +57,13 @@ that component has access to object{
   history,location,match
 }
 For more:- https://www.udemy.com/course/complete-react-developer-zero-to-mastery/learn/lecture/14974356#search
+*/
+
+/*
+<Route exact path="/asis-clothing/hats" component={UnderConstruction} />
+<Route exact path="/asis-clothing/jackets" component={UnderConstruction} />
+<Route exact path="/asis-clothing/sneakers" component={UnderConstruction} />
+<Route exact path="/asis-clothing/mens" component={UnderConstruction} />
+<Route exact path="/asis-clothing/womens" component={UnderConstruction} />
+<Route exact path="/asis-clothing/contact" component={UnderConstruction} />
 */

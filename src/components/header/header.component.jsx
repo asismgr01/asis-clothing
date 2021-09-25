@@ -14,7 +14,7 @@ const Header = (props) => (
       <Link className="option" to="/asis-clothing/shop">
         SHOP
       </Link>
-      <Link className="option" to="/asis-clothing/shop">
+      <Link className="option" to="/asis-clothing/under-construction/contact">
         CONTACT
       </Link>
       {props.user ? (

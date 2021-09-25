@@ -11,10 +11,10 @@ const MenuItem = ({size,imageUrl,title,history,linkUrl,match}) => (
         }
         }
         onClick={() =>(
-            history.push(`/${linkUrl}`)
+            history.push(`/asis-clothing/under-construction/${linkUrl}`)
           )}
       />
-    <div className="content" onClick={() => history.push(`/${linkUrl}`)}>
+    <div className="content" onClick={() => history.push(`/asis-clothing/under-construction/${linkUrl}`)}>
       <h1 className="title">{title.toUpperCase()}</h1>
       <span className="subtitle">SHOP NOW</span>
     </div>
