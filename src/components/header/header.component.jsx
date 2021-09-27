@@ -18,7 +18,7 @@ const Header = (props) => (
         CONTACT
       </Link>
       {props.user ? (
-        <Link className="option" to="" onClick={() => auth.signOut()}>
+        <Link className="option" to="/asis-clothing/" onClick={() => auth.signOut()}>
           SIGN OUT
         </Link>
       ) : (

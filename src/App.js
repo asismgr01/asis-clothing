@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Homepage from "./pages/homepage/homepage.component";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Shop from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
@@ -19,30 +19,50 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async(user) => {
-
-      createUserProfileDocument(user);
-      //this.setState({ currentUser: user });
-      /*
-      if (this.state.currentUser) {
-        console.log(this.state.currentUser.uid);
-      }*/
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          this.setState(
+            {
+              currentUser: {
+                id: snapShot.id,
+                ...snapShot.data(),
+              },
+            },
+            () => console.log(this.state)
+          );
+        });
+      } else {
+        this.setState({ currentUser: userAuth });
+      }
     });
+    <Route />;
   }
   componentWillUnmount() {
     this.unsubscribeFromAuth();
     console.log(this.state.currentUser);
   }
   render() {
-    const links = ['hats','jackets','sneakers','mens','womens','contact']
+    const loggedIn = this.state.currentUser;
+    //console.log(loggedIn)
     return (
       <div>
         <Header user={this.state.currentUser} />
         <Switch>
           <Route exact path="/asis-clothing/" component={Homepage} />
           <Route exact path="/asis-clothing/shop" component={Shop} />
-          <Route exact path="/asis-clothing/signin" component={SignInAndSignUpPage} />
-          <Route path="/asis-clothing/under-construction/" component={UnderConstruction} />
+          <Route
+            exact
+            path="/asis-clothing/signin"
+            component={SignInAndSignUpPage}
+          >
+            {loggedIn ? <Redirect to="/asis-clothing/" /> : <SignInAndSignUpPage />}
+          </Route>
+          <Route
+            path="/asis-clothing/under-construction/"
+            component={UnderConstruction}
+          />
         </Switch>
       </div>
     );
