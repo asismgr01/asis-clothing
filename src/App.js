@@ -7,34 +7,26 @@ import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils.js";
 import UnderConstruction from "./pages/under-construction/under-construction.component";
+import { connect } from "react-redux";
+import { setCurrentUser } from "./redux/user/user.action";
+import Monsters from "./components/monsters/monsters.component";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: null,
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapShot) => {
-          this.setState(
-            {
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data(),
-              },
-            }
-            //,() => console.log(this.state)
-          );
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data(),
+          });
         });
       } else {
-        this.setState({ currentUser: userAuth });
+        setCurrentUser(userAuth);
       }
     });
     <Route />;
@@ -44,11 +36,11 @@ class App extends React.Component {
     console.log(this.state.currentUser);
   }
   render() {
-    const loggedIn = this.state.currentUser;
+    const loggedIn = this.props.currentUser;
     //console.log(loggedIn)
     return (
       <div>
-        <Header user={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path="/asis-clothing/" component={Homepage} />
           <Route exact path="/asis-clothing/shop" component={Shop} />
@@ -57,19 +49,32 @@ class App extends React.Component {
             path="/asis-clothing/signin"
             component={SignInAndSignUpPage}
           >
-            {loggedIn ? <Redirect to="/asis-clothing/" /> : <SignInAndSignUpPage />}
+            {loggedIn ? (
+              <Redirect to="/asis-clothing/" />
+            ) : (
+              <SignInAndSignUpPage />
+            )}
           </Route>
           <Route
             path="/asis-clothing/under-construction/"
             component={UnderConstruction}
+          />
+          <Route
+            path="/asis-clothing/monsters/"
+            component={Monsters}
           />
         </Switch>
       </div>
     );
   }
 }
-
-export default App;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+const mapsDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+export default connect(mapStateToProps, mapsDispatchToProps)(App);
 
 /*
 When we give component(component={Homepage}) as props in Route component,
