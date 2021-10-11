@@ -4,7 +4,7 @@ import "./custom-button.style.scss";
 const CustomButton = (props) => (
   <div className={`${(props.width) ? "large" : ""}`}>
     <button
-      className={`${props.googleButton ? "googleButton" : ""} custom-button`}
+      className={`${props.inverted ? "inverted" : ""} ${props.googleButton ? "googleButton" : ""} custom-button`}
       type={props.type}
       onClick={props.onClick}
     >

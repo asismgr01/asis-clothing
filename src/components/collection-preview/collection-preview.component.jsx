@@ -14,6 +14,7 @@ const Collection = (props) => {
                             imageUrl={item.imageUrl}
                             name={item.name}
                             price={item.price}
+                            item={item}
                         />
                     ))
                 }

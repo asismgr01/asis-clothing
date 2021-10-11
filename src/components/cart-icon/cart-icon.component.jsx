@@ -2,15 +2,12 @@ import React from "react";
 import {ReactComponent as Cart} from '../../assets/shopping-bag.svg'
 import './cart-icon.style.scss'
 import { connect } from "react-redux";
-import  toggleCartHidden  from '../../redux/cart/cart.action'
+import  { toggleCartHidden }  from '../../redux/cart/cart.action'
 
 const CartIcon = (props) => {
     console.log(props)
-    const {cartProduct,toggleCartHidden} = props
-    let length = 0
-    for (const product in cartProduct) {
-        length++
-      }
+    const {toggleCartHidden,cart} = props
+    let length = cart.length
     return(
         <div className="cart-icon" onClick={toggleCartHidden}>
             <Cart className="shopping-icon"/>
@@ -20,7 +17,7 @@ const CartIcon = (props) => {
 }
 
 const mapStateToProps = state => ({
-    cartProduct: state.cartItem.cartProduct
+    cart: state.cart.cartItems
 })
 
 const mapsDispatchToProps = dispatch => ({
