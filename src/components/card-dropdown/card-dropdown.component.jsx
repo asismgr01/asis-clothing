@@ -2,17 +2,22 @@ import React from "react";
 import "./card-dropdown.style.scss";
 import CustomButton from "../custom-button/custom-button.component";
 import { connect } from "react-redux";
+import CartItem from "../cart-item/cart-item.component";
 
 const CardDropdown = ({ cart }) => {
   return (
     <div className="cart-dropdown">
-      <div className="cart-items" />
+      <div className="cart-items">
       {cart.map((item) => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          <p>{item.price}</p>
-        </div>
+        <CartItem 
+          key={item.key}
+          name={item.name}
+          imgUrl={item.imageUrl}
+          price={item.price}
+          quantity={item.quantity}
+        />
       ))}
+      </div>
       <CustomButton>CHECKOUT</CustomButton>
     </div>
   );
